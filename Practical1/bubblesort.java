@@ -1,50 +1,40 @@
-class bubblesort
-{
-static void bubblesort(int arr[])
-{
-int n= arr.length;
-int tmp=0;
-for(int i=0;i<n;i++)
-{
-for(int j=1;j<n-1;j++)
-{
-if(arr[j-1]>arr[j])
-//Swap the element as bigger element is found before the word searched
-{
-tmp=arr[j-1];
-arr[j-1]=arr[j];
-arr[j]=tmp;
-}
-}
-}
-}
-public static void main(String args[])
-{
-    int[] inputTenThousand=new int [10000];
-    for(int a=0;a<inputTenThousand.length;a++)
-    {
-        inputTenThousand[a]=(a%10000)+1;
+public class bubblesort2 {
+    // Function to implement bubble sort
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        boolean swapped;
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // Swap arr[j] and arr[j + 1]
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            // If no two elements were swapped by inner loop, then break
+            if (!swapped) break;
+        }
     }
 
-    long startTime = System.currentTimeMillis();
-System.out.println("Array before using Bubble sort");
-for(int i=0;i<inputTenThousand.length;i++)
-{
-System.out.println(inputTenThousand[i]+"");
-}
-System.out.println();
-bubblesort(inputTenThousand);
-System.out.println("Array after using Bubble sort");
-for(int i=0;i<inputTenThousand.length;i++)
-{
-    System.out.println(inputTenThousand[i]+"");
+    public static void main(String[] args) {
+        // Generating an array with 10000 random integers
+        int[] arr = new int[10000];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (int) (Math.random() * 10000);
+        }
 
+        // Measuring the time taken to sort the array
+        long startTime = System.currentTimeMillis();
+        bubbleSort(arr);
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("Time taken for sorting 10000 elements: " + (endTime - startTime) + " milliseconds");
+    }
 }
-long endTime = System.currentTimeMillis();
-    long duration = endTime - startTime;
-    System.out.println("\n This is duration "+duration);
-}
-}
+
 
 
 
